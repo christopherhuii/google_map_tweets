@@ -12,7 +12,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass', '~> 3.3.5'
-gem 'dotenv-rails', :groups => [:development, :test]
 gem 'hirb'
 gem 'httparty'
 
@@ -21,5 +20,6 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'dotenv-rails', github: "bkeepers/dotenv"
 end
 
