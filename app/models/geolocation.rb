@@ -18,6 +18,5 @@ class Geolocation
   def zip_code_to_coords
     @lat = @location_json['results'][0]['geometry']['location']['lat']
     @lng = @location_json['results'][0]['geometry']['location']['lng']
-    p @lng
   end
 end
