@@ -1,9 +1,12 @@
 <div class="container">
   <div class="wrapper">
-    <%= form_tag(root_path, method: "get", remote: true) do %>
+    <%= form_tag(root_path, method: "get") do %>
       <%= label_tag :zip_code, "Enter your Zip Code", class: "form-label" %><br />
       <%= text_field_tag :zip_code, '', placeholder: "e.g. 91765", class: "form-control" %><br />
       <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+    <%= @tweets.tweet_texts.each do |tweet| %>
+      <p><%= tweet %></p>
     <% end %>
     <div id="map"></div>
 <!--     <div id="innercontent">
