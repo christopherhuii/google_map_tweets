@@ -15,6 +15,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'hirb'
 gem 'httparty'
 gem 'twitter'
+gem 'gon'
 
 
 group :development, :test do

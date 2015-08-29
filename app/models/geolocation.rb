@@ -4,11 +4,10 @@ class Geolocation
 
   def initialize(zip_code)
     self.zip_code = zip_code
-    # zip_code = "ergergergbryjtnhgteutfdjhty" if zip_code.blank?
     unless zip_code.blank?
       @location_json = fetch_geolocation(zip_code)
       zip_code_to_coords
-    end
+      end
   end
 
   def fetch_geolocation(zip_code)

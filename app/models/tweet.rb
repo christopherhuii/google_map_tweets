@@ -1,5 +1,5 @@
 class Tweet
-  attr_accessor :query, :lat, :lng, :tweet_texts
+  attr_accessor :query, :lat, :lng, :tweet_coordinates
 
   def initialize(query, lat, lng)
     self.query = query
@@ -19,11 +19,9 @@ class Tweet
   end
 
   def view_tweet
-    @tweet_texts = []
+    @tweet_coordinates = []
     @tweets_container.each do |tweet|
-      $twitter_client.status(tweet).geo.coordinates
-      @tweet_texts << tweet.text
-
+      @tweet_coordinates << $twitter_client.status(tweet).geo.coordinates
     end
   end
 end
