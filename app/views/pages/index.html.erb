@@ -2,7 +2,10 @@
   <div class="wrapper">
     <%= form_tag(root_path, method: "get", remote: true) do %>
       <%= label_tag :zip_code, "Enter your Zip Code", class: "form-label" %><br />
-      <%= text_field_tag :zip_code, '', placeholder: "e.g. 91765", class: "form-control" %><br />
+      <%= text_field_tag :zip_code, '', placeholder: "e.g. 91765", required: true, class: "form-control" %><br />
+      <%= label_tag :query, "Enter Search Query", class: "form-label" %><br />
+      <%= text_field_tag :query, '', placeholder: "e.g. american ninja warrior", required: true, class: "form-control" %><br />
+
 
       <%= submit_tag "Search", class: "btn btn-primary", id: "search-button" %>
     <% end %>

@@ -2,11 +2,14 @@ var markers = []
 
 $(function() {
   $('#search-button').on('click', function() {
+
     var location = $('#zip_code').val();
+    var query = $('#query').val();
+
     $.ajax({
       type: 'get',
       dataType: 'json',
-      url: "/?utf8=✓&zip_code=" + location + "&commit=Search",
+      url: "/?utf8=✓&zip_code=" + location + "&query=" + query + "&commit=Search",
       data: { locations: gon.tweet_coords}
 
     }).done( function(responseData) {
@@ -21,6 +24,8 @@ $(function() {
         });
         markers.push(marker);
       };
+      document.getElementById('zip_code').value = '';
+      document.getElementById('query').value = '';
 
     }).fail( function(error){
       console.log(error);

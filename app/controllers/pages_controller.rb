@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def index
     @location = Geolocation.new(params[:zip_code])
-    @tweets = Tweet.new("august", @location.lat, @location.lng)
+    @tweets = Tweet.new(params[:query], @location.lat, @location.lng)
     gon.tweet_coords = @tweets.tweet_coordinates
 
     respond_to do |format|
