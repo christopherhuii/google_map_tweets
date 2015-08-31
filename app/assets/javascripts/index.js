@@ -14,16 +14,33 @@ $(function() {
 
     }).done( function(responseData) {
 
+      // Deleting all old markers previously on the map before adding new ones
       deleteMarkers();
 
+      // Setting LatLng Bounds
+      var markerBounds = new google.maps.LatLngBounds();
+
+      // map.setCenter(new google.maps.LatLng(responseData[0][0], responseData[0][1]));
+
+      // Iterating through all the Tweet Coordinates
       for( i = 0; i < responseData.length; i++) {
         var latLng = new google.maps.LatLng(responseData[i][0], responseData[i][1]);
         var marker = new google.maps.Marker({
           position: latLng,
           map: map
         });
+
+        // Adding all markers to an array making it easier to clear/delete
         markers.push(marker);
+
+        // Extending the boundaries for all the Tweet markers
+        markerBounds.extend(marker.position)
       };
+
+      // Fitting all the Tweet markers on the map
+      map.fitBounds(markerBounds);
+
+      // Clearing out the zip code and query text field
       document.getElementById('zip_code').value = '';
       document.getElementById('query').value = '';
 

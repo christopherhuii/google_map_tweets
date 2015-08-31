@@ -11,7 +11,7 @@ class Tweet
 
   def fetch_tweets
     @tweets_container = []
-    @tweet_objects = $twitter_client.search(query, options = {geocode: "#{lat},#{lng},7mi", result_type: "recent", count: 50})
+    @tweet_objects = $twitter_client.search(query, options = {geocode: "#{lat},#{lng},7mi", result_type: "recent", count: 25})
 
     @tweet_objects.each do |tweet|
       @tweets_container << tweet
@@ -22,6 +22,8 @@ class Tweet
     @tweet_coordinates = []
 
     @tweets_container.each do |tweet|
+
+      # Used in order to filter out Null objects (Tweets without geolocation)
       @has_coordinates = $twitter_client.status(tweet).geo.coordinates?
 
       if @has_coordinates
