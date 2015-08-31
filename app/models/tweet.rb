@@ -20,8 +20,13 @@ class Tweet
 
   def view_tweet
     @tweet_coordinates = []
+
     @tweets_container.each do |tweet|
-      @tweet_coordinates << $twitter_client.status(tweet).geo.coordinates
+      @has_coordinates = $twitter_client.status(tweet).geo.coordinates?
+
+      if @has_coordinates
+        @tweet_coordinates << $twitter_client.status(tweet).geo.coordinates
+      end
     end
   end
 end
